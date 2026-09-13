@@ -4,6 +4,12 @@
     {
       "date": "2026-09-13",
       "type": "docs",
+      "title": "Prelaunch asset and reference audit finalized",
+      "summary": "The Day-1 source plan now prioritizes OoT, Master Quest, OoT3D, Majora's Mask and MM3D, adds a vetted public reference-repo set, remaster benchmarks, dark-theme studies and a minimal acquisition order."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "docs",
       "title": "Prelaunch deep-dive project bible completed",
       "summary": "The prelaunch plan now consolidates engine references, asset provenance, story and title pitches, item and boss ideas, difficulty and co-op feasibility, model routing, and the minimal Day-1 Codex plan."
     },
