@@ -9,7 +9,7 @@
     {
       "date": "2026-09-13",
       "type": "fix",
-      "summary": "Reduced the pending Site change to a minimal data-binding edit that preserves the approved layout."
+      "summary": "Confirmed the existing data binding preserves the approved Site layout while keeping public dashboard panels current."
     },
     {
       "date": "2026-09-13",

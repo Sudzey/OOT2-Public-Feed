@@ -4,5 +4,5 @@
   "dynamic_feed_enabled": true,
   "republish_required": false,
   "reason": "Homepage panels are connected to the sanitized public JSON feed; data-only updates require no Site republish.",
-  "last_reviewed_at": "2026-09-13T08:37:12Z"
+  "last_reviewed_at": "2026-09-13T08:37:22Z"
 }

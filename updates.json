@@ -16,8 +16,8 @@
     {
       "date": "2026-09-13",
       "type": "infrastructure",
-      "title": "Public feed automation prepared",
-      "summary": "The sanitized public-feed pipeline and Site deployment checks are configured. One minimal Site edit is still required to bind the existing dashboard panels to the public JSON feeds without redesigning the Site."
+      "title": "Sanitized live project feed connected",
+      "summary": "The dashboard is connected to the sanitized public feed and refreshes approved status, updates, activity, roadmap, build, and gallery metadata without exposing the private repository."
     },
     {
       "date": "2026-09-13",
