@@ -4,17 +4,17 @@
     {
       "date": "2026-09-13",
       "type": "docs",
-      "summary": "Added a prelaunch project-bible summary, reference manifest, and safe reference-repo bootstrap plan."
+      "summary": "Added a prelaunch project-bible summary, reference manifest, story/title banks, and safe reference-repo bootstrap plan."
     },
     {
       "date": "2026-09-13",
       "type": "fix",
-      "summary": "Confirmed the existing data binding preserves the approved Site layout while keeping public dashboard panels current."
+      "summary": "Audited the live Site and reduced the pending dynamic-feed edit to a no-redesign data-binding change."
     },
     {
       "date": "2026-09-13",
       "type": "infra",
-      "summary": "Prepared the validated public project feed and dynamic Site integration."
+      "summary": "Verified sanitized cross-repository feed publication and public-feed validation."
     }
   ]
 }

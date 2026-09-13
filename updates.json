@@ -16,8 +16,8 @@
     {
       "date": "2026-09-13",
       "type": "infrastructure",
-      "title": "Sanitized live project feed connected",
-      "summary": "The dashboard is connected to the sanitized public feed and refreshes approved status, updates, activity, roadmap, build, and gallery metadata without exposing the private repository."
+      "title": "Sanitized public feed ready",
+      "summary": "The validated public-safe JSON feed is publishing successfully. One minimal Site edit is still required before the current homepage consumes it dynamically."
     },
     {
       "date": "2026-09-13",

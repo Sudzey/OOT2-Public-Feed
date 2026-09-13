@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "canonical_site": "https://oot2-master-project.sudzey.chatgpt.site",
-  "dynamic_feed_enabled": true,
-  "republish_required": false,
-  "reason": "Homepage panels are connected to the sanitized public JSON feed; data-only updates require no Site republish.",
-  "last_reviewed_at": "2026-09-13T12:32:00Z"
+  "dynamic_feed_enabled": false,
+  "republish_required": true,
+  "reason": "One minimal Site edit is still required to bind the existing approved homepage panels to the public JSON feed. Preserve the current design; use website/site_edit_prompt_dynamic_feed.txt.",
+  "last_reviewed_at": "2026-09-13T13:24:14Z"
 }
