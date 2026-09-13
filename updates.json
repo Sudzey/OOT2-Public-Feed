@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updates": [
+    {
+      "date": "2026-09-13",
+      "type": "automation",
+      "title": "Public live-feed architecture added",
+      "summary": "Created a dedicated public-safe feed repository so the OOT2 website can refresh project status, updates, roadmap, build state, and gallery metadata without exposing the private development repository."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "graphics",
+      "title": "Remastered-style graphics direction confirmed",
+      "summary": "OOT2 remains a new direct sequel to Ocarina of Time. Remastered-style refers only to the visual target, not to remaking the original game."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "infrastructure",
+      "title": "Private and public repositories connected to project plan",
+      "summary": "The development repository remains private while public website data is emitted through an intentionally sanitized public feed."
+    }
+  ]
+}

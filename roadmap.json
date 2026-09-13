@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "milestones": [
+    {"id": 0, "name": "Foundation", "status": "in_progress", "target": "Sep 2026"},
+    {"id": 1, "name": "Systems Prototype", "status": "planned", "target": "Sep-Oct 2026"},
+    {"id": 2, "name": "Tooling & Test Farm", "status": "planned", "target": "Oct 2026"},
+    {"id": 3, "name": "Vertical Slice", "status": "planned", "target": "Nov-Dec 2026"},
+    {"id": 4, "name": "5-10 Hour Complete Sequel", "status": "planned", "target": "Jan-Jun 2027"},
+    {"id": 5, "name": "Optional OoT-Sized Expansion", "status": "optional", "target": "Jul 2027-Mar 2028+"}
+  ]
+}

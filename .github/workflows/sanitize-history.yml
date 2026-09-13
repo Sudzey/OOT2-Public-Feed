@@ -1,0 +1,45 @@
+name: Sanitize public-feed history
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sanitize-history.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite-once-per-version:
+    if: ${{ github.repository == 'Sudzey/OOT2-Public-Feed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Stop if current sanitization version is already applied
+        id: marker
+        run: |
+          EXPECTED='v2'
+          CURRENT=''
+          if [ -f .history-sanitized ]; then
+            CURRENT=$(head -n 1 .history-sanitized || true)
+          fi
+          if [ "$CURRENT" = "$EXPECTED" ]; then
+            echo "done=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "done=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Replace reachable main history with one bot-authored snapshot
+        if: steps.marker.outputs.done != 'true'
+        run: |
+          printf '%s\n%s\n' 'v2' 'Public feed history was intentionally squashed so the public branch contains only bot-authored publication metadata.' > .history-sanitized
+          git config user.name 'OOT2 Public Feed Bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout --orphan sanitized-main-v2
+          git add -A
+          git commit -m 'chore: establish sanitized public-feed baseline v2'
+          git push --force origin HEAD:main

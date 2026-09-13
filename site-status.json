@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "canonical_site": "https://oot2-master-project.sudzey.chatgpt.site",
+  "dynamic_feed_enabled": false,
+  "republish_required": true,
+  "reason": "One-time site edit is required to make the homepage panels read this public feed dynamically.",
+  "last_reviewed_at": "2026-09-13T05:17:00Z"
+}

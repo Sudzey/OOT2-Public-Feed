@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "activity": [
+    {
+      "date": "2026-09-13",
+      "type": "infra",
+      "summary": "Initialized sanitized public development feed and validation rules."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "docs",
+      "summary": "Updated project documentation with public-feed automation, privacy boundaries, and site deployment rules."
+    }
+  ]
+}

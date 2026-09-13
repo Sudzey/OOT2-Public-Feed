@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "id": "concept-home-001",
+      "category": "Concept / Visual Target",
+      "title": "OOT2 visual target",
+      "caption": "Remastered-style visual direction for the new OOT2 sequel.",
+      "date": "2026-09-13",
+      "label": "Concept Art / Visual Target — Not Gameplay",
+      "image_url": null,
+      "approved": false
+    }
+  ]
+}

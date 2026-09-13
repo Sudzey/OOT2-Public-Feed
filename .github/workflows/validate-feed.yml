@@ -1,0 +1,100 @@
+name: Validate public feed
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON and privacy rules
+        shell: python
+        run: |
+          import ipaddress, json, pathlib, re
+          from urllib.parse import urlparse
+
+          files = [
+              'project.json', 'updates.json', 'github-feed.json',
+              'build-status.json', 'roadmap.json', 'gallery.json', 'site-status.json'
+          ]
+          text = ''
+          for name in files:
+              p = pathlib.Path(name)
+              if not p.exists():
+                  raise SystemExit(f'Missing required feed file: {name}')
+              data = json.loads(p.read_text(encoding='utf-8'))
+              if data.get('schema_version') != 1:
+                  raise SystemExit(f'{name}: schema_version must be 1')
+              text += '\n' + p.read_text(encoding='utf-8')
+
+          forbidden = {
+              'GitHub classic token': r'gh[pousr]_[A-Za-z0-9_]{20,}',
+              'GitHub fine-grained token': r'github_pat_[A-Za-z0-9_]{20,}',
+              'OpenAI-style key': r'\bsk-[A-Za-z0-9_-]{20,}',
+              'AWS access key': r'\bAKIA[0-9A-Z]{16}\b',
+              'email address': r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
+              'IPv4 address': r'(?<!\d)(?:\d{1,3}\.){3}\d{1,3}(?!\d)',
+              'Windows absolute path': r'(?i)\b[A-Z]:\\(?:Users|Documents and Settings|ProgramData|Windows|Temp|[^\s\\/:*?\"<>|]+)\\',
+              'UNC/network path': r'\\\\[^\\\s]+\\[^\\\s]+',
+              'Linux home path': r'(?i)(?:^|[\s\"\'])/home/[^\s\"\']+',
+              'macOS user path': r'(?i)(?:^|[\s\"\'])/Users/[^\s\"\']+',
+              'ROM filename/extension': r'(?i)\.(?:z64|n64|v64|rom)\b',
+              'private repo URL': r'(?i)https?://(?:www\.)?github\.com/Sudzey/OOT2(?:\.git|/|\b)(?!-Public-Feed)',
+              'private repo slug': r'(?i)\bSudzey/OOT2\b(?!-Public-Feed)',
+          }
+          for label, pattern in forbidden.items():
+              if re.search(pattern, text, flags=re.MULTILINE | re.IGNORECASE):
+                  raise SystemExit(f'Privacy validation failed: detected {label}')
+
+          def contains_ipv6(value):
+              for raw in re.findall(r'(?<![0-9A-Za-z])\[?[0-9A-Fa-f:]{2,}\]?(?![0-9A-Za-z])', value):
+                  candidate = raw.strip('[],:;(){}<>\"\'')
+                  if candidate.count(':') < 2:
+                      continue
+                  try:
+                      if isinstance(ipaddress.ip_address(candidate), ipaddress.IPv6Address):
+                          return True
+                  except ValueError:
+                      pass
+              return False
+
+          if contains_ipv6(text):
+              raise SystemExit('Privacy validation failed: detected IPv6 address')
+
+          def validate_public_url(url, label):
+              parsed = urlparse(url)
+              if parsed.scheme != 'https' or not parsed.netloc:
+                  raise SystemExit(f'{label} must use https')
+              if parsed.username or parsed.password:
+                  raise SystemExit(f'{label} must not contain embedded credentials')
+              if parsed.query and re.search(r'(?i)(token|key|secret|signature|sig)=', parsed.query):
+                  raise SystemExit(f'{label} contains credential-like query parameters')
+
+          project = json.loads(pathlib.Path('project.json').read_text(encoding='utf-8'))
+          if project.get('website'):
+              validate_public_url(project['website'], 'project.website')
+
+          allowed_gallery_hosts = {
+              'raw.githubusercontent.com', 'github.com',
+              'user-images.githubusercontent.com', 'private-user-images.githubusercontent.com',
+              'chatgpt.com'
+          }
+          gallery = json.loads(pathlib.Path('gallery.json').read_text(encoding='utf-8'))
+          for item in gallery.get('items', []):
+              if item.get('category') == 'Concept / Visual Target':
+                  if item.get('label') != 'Concept Art / Visual Target — Not Gameplay':
+                      raise SystemExit('Concept gallery item missing required disclaimer')
+              image_url = item.get('image_url')
+              if image_url:
+                  validate_public_url(image_url, 'gallery.image_url')
+                  host = (urlparse(image_url).hostname or '').lower()
+                  if host not in allowed_gallery_hosts:
+                      raise SystemExit(f'gallery image host is not allowlisted: {host}')
+
+          print('Public feed validation passed.')
