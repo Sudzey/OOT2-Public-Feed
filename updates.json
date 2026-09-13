@@ -3,21 +3,27 @@
   "updates": [
     {
       "date": "2026-09-13",
-      "type": "automation",
-      "title": "Public live-feed architecture added",
-      "summary": "Created a dedicated public-safe feed repository so the OOT2 website can refresh project status, updates, roadmap, build state, and gallery metadata without exposing the private development repository."
+      "type": "docs",
+      "title": "Prelaunch deep-dive project bible completed",
+      "summary": "The prelaunch plan now consolidates engine references, asset provenance, story and title pitches, item and boss ideas, difficulty and co-op feasibility, model routing, and the minimal Day-1 Codex plan."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "infrastructure",
+      "title": "Public-feed privacy validation strengthened",
+      "summary": "The public update pipeline now blocks additional credential, network-path, machine-path, and unapproved image-host patterns before website data can be published."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "infrastructure",
+      "title": "Public feed automation prepared",
+      "summary": "The sanitized public-feed pipeline and Site deployment checks are configured. One minimal Site edit is still required to bind the existing dashboard panels to the public JSON feeds without redesigning the Site."
     },
     {
       "date": "2026-09-13",
       "type": "graphics",
       "title": "Remastered-style graphics direction confirmed",
-      "summary": "OOT2 remains a new direct sequel to Ocarina of Time. Remastered-style refers only to the visual target, not to remaking the original game."
-    },
-    {
-      "date": "2026-09-13",
-      "type": "infrastructure",
-      "title": "Private and public repositories connected to project plan",
-      "summary": "The development repository remains private while public website data is emitted through an intentionally sanitized public feed."
+      "summary": "OOT2 remains a new direct sequel to Ocarina of Time. Remastered-style describes the visual target only."
     }
   ]
 }

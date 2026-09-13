@@ -3,13 +3,18 @@
   "activity": [
     {
       "date": "2026-09-13",
-      "type": "infra",
-      "summary": "Initialized sanitized public development feed and validation rules."
+      "type": "docs",
+      "summary": "Added a prelaunch project-bible summary, reference manifest, and safe reference-repo bootstrap plan."
     },
     {
       "date": "2026-09-13",
-      "type": "docs",
-      "summary": "Updated project documentation with public-feed automation, privacy boundaries, and site deployment rules."
+      "type": "fix",
+      "summary": "Reduced the pending Site change to a minimal data-binding edit that preserves the approved layout."
+    },
+    {
+      "date": "2026-09-13",
+      "type": "infra",
+      "summary": "Prepared the validated public project feed and dynamic Site integration."
     }
   ]
 }
