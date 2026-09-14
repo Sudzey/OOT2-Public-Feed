@@ -4,5 +4,5 @@
   "dynamic_feed_enabled": false,
   "republish_required": true,
   "reason": "One minimal Site edit is still required to bind the existing approved homepage panels to the public JSON feed. Preserve the current design; use website/site_edit_prompt_dynamic_feed.txt.",
-  "last_reviewed_at": "2026-09-14T00:36:23Z"
+  "last_reviewed_at": "2026-09-14T06:36:21Z"
 }
